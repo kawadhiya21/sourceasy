@@ -55,7 +55,7 @@ def add_sizes(request,product_id):
                     product_size.save()
             except:
                 pass
-            return redirect('/product/add_size_details/'+str(product_definition.id))
+        return redirect('/product/add_size_details/'+str(product_definition.id))
     return render_to_response('product/add_sizes.html', { 'product_definition' : product_definition } ,context_instance=RequestContext(request))
     
 @login_required
