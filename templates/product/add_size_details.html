@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="well col-md-12">
+        <form action="" class="form-horizontal" method="POST">{% csrf_token %}
+        {% if message %}
+            {{ message }}
+        {% endif %}
+        <h2>Specify Details According to Size</h2>
+        <h4>Your product is {{ product_definition.product_name }}</h4>
+        <table class="table table-striped">
+        <thead>
+            <th style=" width: 150px; ">Name of Detail</th>
+            {% for psize in product_size %}
+                <th id="{{ psize.id }}">{{ psize.size_name }}</th>
+            {% endfor %}
+        </thead>
+            <tbody id="details_size">
+            </tbody>
+        </table>
+        <button id='add_detail_size'>Add Details</button>
+        <input type="hidden" name="product_size_num" id="product_size_num" value="{{ product_size|length }}">
+        <input type="hidden" name="detail_size_num" id="detail_size_num" value="0">
+        <input type="submit" value="Submit">
+        </form>
+    </div>
+    <script type="text/javascript">
+    var size_array = [];
+    {% for psize in product_size %}
+        size_array.push('{{ psize.id }}'.toString());
+    {% endfor %}    
+    </script>
+</div>    
+{% endblock %}

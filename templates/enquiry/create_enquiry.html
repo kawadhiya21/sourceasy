@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <h2>Create New Enquiry</h2>
+        <ol class="breadcrumb">
+          <li>
+            <a href="#">Enquiry</a>
+          </li>
+          <li>
+            New Enquiry
+          </li>
+        </ol>
+        {% for product_definition in product_definitions %}
+        <a href="/enquiry/step_1/{{ product_definition.id }}">
+          <div class="row" style="border:solid 2px;">
+            Name: {{ product_definition.product_name }}</br>
+            Description: {{ product_definition.description }}</br>
+            <img src="{{ MEDIA_URL }}{{ product_definition.primary_image }}" style="width:200px"/>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+      <div class="col-md-1"></div>
+</div>
+{% endblock %}    

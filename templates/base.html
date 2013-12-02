@@ -1,0 +1,50 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Sourceasy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="{{ STATIC_URL}}bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="{{ STATIC_URL}}slider.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="{{ STATIC_URL}}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}page/footer.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <header class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+	    <div class="navbar-header">
+		<a href='/' class="navbar-brand">Sourceasy</a>
+	    </div>
+	    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+		<ul class="nav navbar-nav">
+		    <li><a href="/" class="active">Home</a></li>
+		    <li><a href="/product/login">About Us</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+		    <li><a href="/product/logout">Logout</a></li>
+		</ul>
+	    </nav>
+	</div>
+    </header>
+    <div class="container">
+    	{% block content %}
+    	{% endblock content %}
+    </div>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/custom.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/slider.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/slide.js"></script>
+ </body>
+</html>
+

@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="well col-md-12">
+        {% if message %}
+            {{ message }}
+        {% endif %}
+    <h2>Select the Fabric(s)</h2>
+    <form class="form" action="" method="POST">{% csrf_token %}
+    <h3>Add the BaseFabric Details</h3>
+        <div id="fiber">
+            <div class="row" style="padding:15px;">
+                <div class="col-md-8">
+                    <div id="fiber1">
+                        <h3>Fiber 1</h3>
+                        Choose :<select name="basefiber1_type">
+                                <option selected="true">Not Included</option>
+                            {% for fabric_constant in fabric_constants %}
+                            {% if fabric_constant.constant_type == "fiber" %}
+                                <option value="{{ fabric_constant.constant_value }}">{{ fabric_constant.constant_value }}</option>
+                            {% endif %}
+                            {% endfor %}
+                                </select> 
+                        
+                         Percentage(%):
+                        <input type="text" class="col-md-3" style="float:none!important" name="basefiber1_percentage" id="f1" value="0">
+                    </div>
+                    <div id="fiber2">
+                        <h3>Fiber 2</h3>
+                        Choose :<select name="basefiber2_type">
+                                <option selected="true">Not Included</option>
+                            {% for fabric_constant in fabric_constants %}
+                            {% if fabric_constant.constant_type == "fiber" %}
+                                <option value="{{ fabric_constant.constant_value }}">{{ fabric_constant.constant_value }}</option>
+                            {% endif %}
+                            {% endfor %}
+                                </select> 
+                        
+                         Percentage(%):
+                        <input type="text" class="col-md-3" style="float:none!important" name="basefiber2_percentage" id="f2" value="0">
+                    </div>
+                    <div id="fiber3">
+                        <h3>Fiber 3</h3>
+                        Choose :<select name="basefiber3_type">
+                                <option selected="true">Not Included</option>
+                            {% for fabric_constant in fabric_constants %}
+                            {% if fabric_constant.constant_type == "fiber" %}
+                                <option value="{{ fabric_constant.constant_value }}">{{ fabric_constant.constant_value }}</option>
+                            {% endif %}
+                            {% endfor %}
+                                </select> 
+                        
+                         Percentage(%):
+                        <input type="text" class="col-md-3" style="float:none!important" name="basefiber3_percentage" id="f3" value="0">
+                    </div>
+                    <div id="fiber4">
+                        <h3>Fiber 4</h3>
+                        Choose :<select name="basefiber4_type">
+                                <option selected="true">Not Included</option>
+                            {% for fabric_constant in fabric_constants %}
+                            {% if fabric_constant.constant_type == "fiber" %}
+                                <option value="{{ fabric_constant.constant_value }}">{{ fabric_constant.constant_value }}</option>
+                            {% endif %}
+                            {% endfor %}
+                                </select> 
+                        
+                         Percentage(%):
+                        <input type="text" class="col-md-3" style="float:none!important" name="basefiber4_percentage" id="f4" value="0">
+                    </div>
+                    <div id="lycra_div">
+                        <h3>Lycra</h3>
+                         Percentage(%):
+                        <input type="text" class="col-md-3" style="float:none!important" name="baselycra" id="lycra" value="0">
+                    </div>
+                </div>
+            </div>
+            <h3 id="total">Total :</h3>
+        </div>
+        <div class="form-group">
+            GSM:<input type="text" name="basegsm" id="gsm">
+            Knitted:<input type="radio" value="knitted" name="baseconstruction_type" id="base_knitted">
+            Woven:<input type="radio" name="baseconstruction_type" id="base_woven" value="woven">
+            <select name="base_knitted" id="baseknitted" style="display:none;">
+                                <option selected="true">Not Included</option>
+                            {% for fabric_constant in fabric_constants %}
+                            {% if fabric_constant.constant_type == "knitted" %}
+                                <option value="{{ fabric_constant.constant_value }}">{{ fabric_constant.constant_value }}</option>
+                            {% endif %}
+                            {% endfor %}
+            </select>
+            <select name="base_woven" id="basewoven" style="display:none;">
+                                <option selected="true">Not Included</option>
+                            {% for fabric_constant in fabric_constants %}
+                            {% if fabric_constant.constant_type == "woven" %}
+                                <option value="{{ fabric_constant.constant_value }}">{{ fabric_constant.constant_value }}</option>
+                            {% endif %}
+                            {% endfor %}
+            </select><br>
+         </div>   
+            <div id="trimfabric">
+            </div>    
+           <button id="add_trim_button" class="btn btn-default btn-success">AdD MorE TriMM</button>
+        <div class="form-group">
+        <input type="hidden" name="trim_fabric_count" id="trim_fabric_count" value="0">
+            <button type="submit" id="submit_fabric_details" class="btn btn-default btn-primary" disabled="true">Lets Go !</button>
+        </div>
+    </form>
+    </div>
+</div>
+<script type="text/javascript">
+    var fiber_array = [];
+    var knitted_array = [];
+    var woven_array = [];
+    {% for fabric_constant in fabric_constants %}
+    {% if fabric_constant.constant_type == "fiber" %}
+        fiber_array.push('{{ fabric_constant.constant_value }}'.toString());
+    {% endif %}
+    {% endfor %}
+    {% for fabric_constant in fabric_constants %}
+    {% if fabric_constant.constant_type == "knitted" %}
+        knitted_array.push('{{ fabric_constant.constant_value }}'.toString());
+    {% endif %}
+    {% endfor %}
+    {% for fabric_constant in fabric_constants %}
+    {% if fabric_constant.constant_type == "woven" %}
+        woven_array.push('{{ fabric_constant.constant_value }}'.toString());
+    {% endif %}
+    {% endfor %}
+</script>
+{% endblock %}
