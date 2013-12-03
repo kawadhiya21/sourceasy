@@ -14,6 +14,12 @@ from product.utils import *
 from product.models import *
 from users.views import *
 from product import constants as C
+# django-rest framework imports
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_exempt
+from product.serializers import *
 
 @login_required
 @is_operator
@@ -215,3 +221,24 @@ def add_fabric(request,product_id):
 
 def test(request):
     return render_to_response("enquiry/create_enquiry.html", context_instance=RequestContext(request))
+
+''' example for django-rest framework 
+@api_view(['GET'])
+def api_list(request,pk=None):
+    if request.method == 'GET':
+        if pk is not None:
+            garment = Garment.objects.get(pk=pk)
+        else:
+            garment = Garment.objects.all()
+        serializer = ApiSerial(garment)
+        return Response(serializer.data)
+'''
+@api_view(['GET'])
+def api_product_definition(request, product_id=None):
+    if request.method == 'GET':
+        if product_id is not None:
+            product_definition = Product_Definition.objects.get(pk=product_id)
+        else:
+            product_definition = Product_Definition.objects.all()
+        serializer = ProductDefinitionApi(product_definition)
+        return Response(serializer.data)

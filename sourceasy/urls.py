@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'sourceasy.views.home', name='home'),
     # url(r'^sourceasy/', include('sourceasy.foo.urls')),
+    url(r'^enquiry/', include('customer_enquiry.urls')),
     url(r'^product/', include('product.urls')),
     url(r'^users/', include('users.urls')),
     # Uncomment the admin/doc line below to enable admin documentation:
