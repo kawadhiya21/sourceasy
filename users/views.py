@@ -22,7 +22,7 @@ def is_operator(function):
     def wrapper(request, *args, **kw):
         user=request.user
         group = user.groups.all()[0].name
-        if group != 'operators':
+        if group != 'operator':
             return HttpResponseRedirect('/users/customer_demo')
         else:
             return function(request, *args, **kw)
