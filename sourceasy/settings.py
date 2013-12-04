@@ -12,24 +12,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-'''
-import dj_database_url
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 
-if bool(os.environ.get('LOCAL_DEV', False)):
-    # Override DATABASES['default'] with your local database configuration
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'sourceasy',                      # Or path to database file if using sqlite3.
-            'USER': 'postgres',                      # Not used with sqlite3.
-            'PASSWORD': 'postgres',                  # Not used with sqlite3.
-            'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-        }
-    }
-'''
-
+# Database settings: works on both localhost and heroku
 import dj_database_url
 DATABASES = {'default': dj_database_url.config(default='postgres://postgres:postgres@localhost:5432/sourceasy')}
 
@@ -40,7 +24,7 @@ DATABASES = {'default': dj_database_url.config(default='postgres://postgres:post
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Asia/Kolkata'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
