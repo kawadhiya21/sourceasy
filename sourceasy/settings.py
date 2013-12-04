@@ -12,12 +12,12 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+'''
 import dj_database_url
 DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 
 if bool(os.environ.get('LOCAL_DEV', False)):
     # Override DATABASES['default'] with your local database configuration
-        
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -28,10 +28,10 @@ if bool(os.environ.get('LOCAL_DEV', False)):
             'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
         }
     }
+'''
 
-# Heroku Database settings
 import dj_database_url
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
+DATABASES = {'default': dj_database_url.config(default='postgres://postgres:postgres@localhost:5432/sourceasy')}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
