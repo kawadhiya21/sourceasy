@@ -15,8 +15,15 @@ MANAGERS = ADMINS
 
 # Database settings: works on both localhost and heroku
 import dj_database_url
-DATABASES = {'default': dj_database_url.config(default='postgres://postgres:postgres@localhost:5432/sourceasy')}
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'sourceasy',                      
+        'USER': 'root',
+        'PASSWORD': 'asdf1234',
+        'HOST': '127.0.0.1'
+                                                            }
+}
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
